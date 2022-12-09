@@ -15,7 +15,6 @@ const Main = () => {
       <Earning />
       <Balance /> 
       <Withdraw />
-
     </>
   )
 }
