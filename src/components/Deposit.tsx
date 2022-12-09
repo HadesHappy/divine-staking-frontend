@@ -1,10 +1,19 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import DepositModal from './DepositModal';
+import toast from 'react-hot-toast';
 
-const Deposit: FC = () => {
+interface Props {
+  account: null | string
+};
+
+const Deposit = ({ account }: Props) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const onButtonClick = () => {
-    setShowModal(true)
+    if (account)
+      setShowModal(true)
+    else {
+      toast.error('You should connect crypto wallet first.')
+    }
   }
   return (
     <>
@@ -13,7 +22,7 @@ const Deposit: FC = () => {
       <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-10 w-[400px] rounded-xl mt-10 mb-5 mx-auto cursor-pointer text-5xl text-gray-800 hover:text-white font-bold text-center tracking-widest' onClick={onButtonClick}>
         Participate
       </div>
-      <DepositModal showModal={showModal} setShowModal={setShowModal} />
+      <DepositModal showModal={showModal} setShowModal={setShowModal} account={account} />
     </>
   )
 }

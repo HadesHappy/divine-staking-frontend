@@ -1,17 +1,12 @@
-import { FC, useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-const Header: FC = () => {
-  const [isMetamaskInstalled, setIsMetamaskInstalled] = useState<boolean>(false);
-  const [account, setAccount] = useState<string | null>(null);
+interface Props {
+  isMetamaskInstalled : boolean,
+  setIsMetamaskInstalled: (value: boolean) => void,
+  setAccount: (value: string) => void
+};
 
-  useEffect(() => {
-    if ((window as any).ethereum) {
-      // check if Metamask wallet is installed
-      setIsMetamaskInstalled(true);
-    }
-  }, []);
-
+const Header = ({ isMetamaskInstalled, setIsMetamaskInstalled, setAccount }: Props) => {
   const connectWallet = async (): Promise<void> => {
     // to get around type checking
     if (isMetamaskInstalled)

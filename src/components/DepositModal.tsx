@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { FaRegWindowClose, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
+import toast from 'react-hot-toast'
+import { BeatLoader } from 'react-spinners';
 
 interface Props {
-  showModal: boolean;
-  setShowModal: (value: boolean) => void;
+  showModal: boolean,
+  setShowModal: (value: boolean) => void,
+  account: null | string,
 }
 
-const DepositModal = ({ showModal, setShowModal }: Props) => {
+const DepositModal = ({ showModal, setShowModal, account }: Props) => {
+  const [amount, setAmount] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const onCloseClick = (e: any) => {
     e.stopPropagation();
     setShowModal(false);
@@ -13,6 +20,17 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
   const onOutSideClick = (e: any) => {
     if (e.target.id === 'outside')
       setShowModal(false)
+  }
+  const onChange = (e: any) => {
+    setAmount(e.target.value);
+  }
+
+  const depositClick = () => {
+    if (amount === 0)
+      toast.error('Invalid Amount');
+    else {
+      toast(amount.toString())
+    }
   }
   return (
     <>
@@ -32,8 +50,17 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
                       <div className='text-center text-lg my-5'>
                         Specify deposit <span className='text-purple-500 uppercase'>matic</span> amount here:
                       </div>
-                      <input className='text-center text-white text-xl py-2 rounded-r-full rounded-l-full bg-gray-700 w-full outline-none' type='number' />
-                      <div className='text-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-52 text-center rounded-full mt-5 py-2 text-gray-700 hover:text-white mx-auto font-bold cursor-pointer'>Deposit</div>
+                      <input className='text-center text-white text-xl py-2 rounded-r-full rounded-l-full bg-gray-700 w-full outline-none' type='number' value={amount} onChange={onChange} />
+                      {
+                        loading ?
+                          <div className='text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-52 text-center rounded-full mt-5 py-2 mx-auto cursor-wait'>
+                            <BeatLoader />
+                          </div>
+                          :
+                          <div className='text-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-52 text-center rounded-full mt-5 py-2 text-gray-900 font-serif hover:text-white mx-auto font-bold cursor-pointer' onClick={depositClick}>
+                            Deposit
+                          </div>
+                      }
                       <hr className='my-5 border-purple-500' />
                       <div className='flex flex-row gap-5 items-center'>
                         <FaExclamationTriangle className='text-pink-500' />
@@ -42,7 +69,7 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
                         </div>
                       </div>
                       <div className='pl-10'>
-                        Do not forget about blockchain fee! You should have 150-200 TRX more on your wallet, or your transaction will get *out of energy* status!<br />
+                        Do not forget about blockchain fee! You should have 15-20 Matic more on your wallet, or your transaction will get *out of energy* status!<br />
                         You can buy/borrow energy for transactions from third-party websites to spend less fee.
                       </div>
                       <div className='my-2'>
