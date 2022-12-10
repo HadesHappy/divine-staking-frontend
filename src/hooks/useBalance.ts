@@ -13,7 +13,7 @@ const useBalance = () => {
       provider.getBalance(account)
         .then((balance: any) => {
           const balanceInEth = ethers.utils.formatEther(balance);
-          setWalletBalance(Number(balanceInEth));
+          setWalletBalance(Math.floor(Number(balanceInEth)*100000)/100000);
         })
         .catch((error) => {
           console.log(error);
@@ -28,7 +28,7 @@ const useBalance = () => {
     getBalance()
   }, [account])
 
-  return { walletBalance };
+  return { walletBalance, getBalance };
 }
 
 export default useBalance;

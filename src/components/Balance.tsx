@@ -1,7 +1,9 @@
 import useBalance from '../hooks/useBalance';
+import useContractInfo from '../hooks/useContractInfo';
 
 const Balance = () => {
   const { walletBalance } = useBalance();
+  const { totalDeposit } = useContractInfo();
 
   return (
     <div className="mx-64 mt-7">
@@ -19,7 +21,7 @@ const Balance = () => {
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-row items-center gap-10">
             <div className="uppercase text-white text-3xl">total deposit:</div>
-            <div className="text-3xl py-5 w-60 text-center bg-[#2d2159] text-white">1000</div>
+            <div className="text-3xl py-5 w-60 text-center bg-[#2d2159] text-white">{totalDeposit || 0}</div>
           </div>
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-full h-3 my-4" />
           <div className="flex flex-row items-center gap-10">

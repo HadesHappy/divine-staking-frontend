@@ -3,7 +3,9 @@ import { FaRegWindowClose, FaCheck, FaExclamationTriangle } from 'react-icons/fa
 import toast from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners';
 import useBalance from '../../hooks/useBalance';
-import { deposit, getMaticPrice } from '../../contract/roi.contract';
+import useMaticPrice from '../../hooks/useMaticPrice';
+import { deposit } from '../../contract/roi.contract';
+import { MINIMUM_DEPOSIT } from '../../utils/constants';
 
 interface Props {
   showModal: boolean,
@@ -13,7 +15,8 @@ interface Props {
 const DepositModal = ({ showModal, setShowModal }: Props) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const { walletBalance } = useBalance();
+  const { walletBalance, getBalance } = useBalance();
+  const { price } = useMaticPrice();
 
   const onCloseClick = (e: any) => {
     e.stopPropagation();
@@ -29,15 +32,27 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
   }
 
   const depositClick = async () => {
-    if (amount === 0)
-      toast.error('Invalid Amount');
+    if (price && amount < Math.floor(MINIMUM_DEPOSIT / price))
+      toast.error(`Invalid Amount. Minimum deposit amount is: ${Math.floor(MINIMUM_DEPOSIT / price)}`);
     else {
       if (walletBalance !== null && amount > walletBalance) {
-        toast.error(`Exceed the wallet balance. You maximum availability is ${walletBalance} matic`);
+        toast.error(`Exceed the wallet balance. Your maximum availability is ${walletBalance} matic`);
       }
       else {
-        
-        // toast(amount.toString());
+        try {
+          setLoading(true);
+          const response = await deposit(amount);
+          if (response.status === 'success'){
+            toast.success(response.message);
+            await getBalance();
+          }
+          else
+            toast.error(response.message);
+          setLoading(false);
+        }
+        catch (error) {
+          toast.error(`something went wrong: ${error}`)
+        }
       }
     }
   }
@@ -78,14 +93,21 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
                           important!
                         </div>
                       </div>
-                      <div className='pl-10'>
-                        Do not forget about blockchain fee! You should have 15-20 Matic more on your wallet, or your transaction will get *out of energy* status!<br />
-                        You can buy/borrow energy for transactions from third-party websites to spend less fee.
-                      </div>
+                      {
+                        price && <div className='pl-10'>
+                          Do not forget about blockchain fee! You should have {Math.floor(10 / price) + 5}-{Math.floor(10 / price) + 10} Matic more on your wallet, or your transaction will get *out of energy* status!<br />
+                          You can buy/borrow energy for transactions from third-party websites to spend less fee.
+                        </div>
+                      }
                       <div className='my-2'>
                         <div className='flex flex-row items-center gap-5'>
                           <FaCheck className=' text-purple-500' />
-                          <div className='text-lg'>Minimum participation amount <span className='uppercase text-purple-500'>10 matic</span></div>
+                          <div className='text-lg'>Minimum participation amount
+                            {
+                              price &&
+                              <span className='uppercase text-purple-500'> {Math.floor(10 / price)} matic</span>
+                            }
+                          </div>
                         </div>
                         <div className='flex flex-row items-center gap-5'>
                           <FaCheck className=' text-purple-500' />
