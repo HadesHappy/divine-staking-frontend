@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import DepositModal from './DepositModal';
 import toast from 'react-hot-toast';
-import { useAccountContext } from '../contexts/accountContext';
+import { useAccountContext } from '../../contexts/accountContext';
 
 const Deposit = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { account } = useAccountContext();
 
   const onButtonClick = () => {
-    console.log('account: ', account);
+    console.log('account: ', account)
     if (account)
       setShowModal(true)
     else {

@@ -1,7 +1,7 @@
 import Card from './Card'
-import texts from '../utils/texts'
+import texts from '../../utils/texts'
 
-const Description = () => {
+const PlatformDescription = () => {
   return (
     <div className='px-10'>
       <div className='text-white font-bold text-4xl text-center mb-5'>Why use <span className='text-purple-500'>Divine</span> platform?</div>
@@ -15,4 +15,4 @@ const Description = () => {
   )
 }
 
-export default Description;
+export default PlatformDescription;

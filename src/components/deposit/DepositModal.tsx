@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaRegWindowClose, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
 import toast from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners';
+import useBalance from '../../hooks/useBalance';
 
 interface Props {
   showModal: boolean,
@@ -12,6 +13,7 @@ interface Props {
 const DepositModal = ({ showModal, setShowModal, account }: Props) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
+  const { walletBalance } = useBalance();
 
   const onCloseClick = (e: any) => {
     e.stopPropagation();
@@ -29,7 +31,13 @@ const DepositModal = ({ showModal, setShowModal, account }: Props) => {
     if (amount === 0)
       toast.error('Invalid Amount');
     else {
-      toast(amount.toString())
+      console.log('wallet balance: ', walletBalance)
+      if (walletBalance !== null && amount > walletBalance) {
+        toast.error(`Exceed the wallet balance. You maximum availability is ${walletBalance} matic`);
+      }
+      else (
+        toast(amount.toString())
+      )
     }
   }
   return (

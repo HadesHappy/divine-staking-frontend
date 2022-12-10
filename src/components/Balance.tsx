@@ -1,36 +1,7 @@
-import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
-import toast from 'react-hot-toast';
-import { useAccountContext } from '../contexts/accountContext';
+import useBalance from '../hooks/useBalance';
 
 const Balance = () => {
-  const [walletBalance, setWalletBalance] = useState<number | null>(null);
-  const { account } = useAccountContext();
-  const getBalance = async (): Promise<void> => {
-    // const network = 'https://polygon-rpc.com/';
-    // const provider = ethers.getDefaultProvider(network);
-    const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com");
-    let address: string;
-    if (account)
-      address = account;
-    else
-      address = '0x00';
-
-    provider.getBalance(address)
-      .then((balance: any) => {
-        console.log(balance)
-        const balanceInEth = ethers.utils.formatEther(balance);
-        setWalletBalance(Number(balanceInEth));
-      })
-      .catch((error) => {
-        toast.error(`Something went wrong: ${error}`);
-      })
-  }
-
-  useEffect(() => {
-    if (account)
-      getBalance()
-  }, [account])
+  const { walletBalance } = useBalance();
 
   return (
     <div className="mx-64 mt-7">

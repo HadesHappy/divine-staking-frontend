@@ -1,8 +1,5 @@
-import {useState, useEffect} from 'react'
-import Description from './Description'
-import Divider from './Devider'
-import Deposit from './Deposit'
-import Earning from './Earning'
+import Description from './descriptions'
+import Deposit from './deposit'
 import Balance from './Balance'
 import Withdraw from './Withdraw'
 import Header from './Header'
@@ -12,10 +9,7 @@ const Main = () => {
     <>
       <Header/>
       <Deposit/>
-      <Divider />      
       <Description />
-      <Divider />
-      <Earning />
       <Balance /> 
       <Withdraw />
     </>
