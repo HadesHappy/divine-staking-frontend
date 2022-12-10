@@ -1,4 +1,4 @@
-[
+const ROI_ABI = [
   {
     "inputs": [
       {
@@ -311,3 +311,5 @@
     "type": "function"
   }
 ]
+
+export default ROI_ABI;

@@ -8,7 +8,6 @@ const Deposit = () => {
   const { account } = useAccountContext();
 
   const onButtonClick = () => {
-    console.log('account: ', account)
     if (account)
       setShowModal(true)
     else {
@@ -22,7 +21,7 @@ const Deposit = () => {
       <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-10 w-[400px] rounded-xl mt-10 mb-5 mx-auto cursor-pointer text-5xl text-gray-800 hover:text-white font-bold text-center tracking-widest' onClick={onButtonClick}>
         Participate
       </div>
-      <DepositModal showModal={showModal} setShowModal={setShowModal} account={account} />
+      <DepositModal showModal={showModal} setShowModal={setShowModal} />
     </>
   )
 }

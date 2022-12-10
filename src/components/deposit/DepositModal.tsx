@@ -3,14 +3,14 @@ import { FaRegWindowClose, FaCheck, FaExclamationTriangle } from 'react-icons/fa
 import toast from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners';
 import useBalance from '../../hooks/useBalance';
+import { deposit, getMaticPrice } from '../../contract/roi.contract';
 
 interface Props {
   showModal: boolean,
-  setShowModal: (value: boolean) => void,
-  account: null | string,
+  setShowModal: (value: boolean) => void
 }
 
-const DepositModal = ({ showModal, setShowModal, account }: Props) => {
+const DepositModal = ({ showModal, setShowModal }: Props) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const { walletBalance } = useBalance();
@@ -23,23 +23,25 @@ const DepositModal = ({ showModal, setShowModal, account }: Props) => {
     if (e.target.id === 'outside')
       setShowModal(false)
   }
+
   const onChange = (e: any) => {
     setAmount(e.target.value);
   }
 
-  const depositClick = () => {
+  const depositClick = async () => {
     if (amount === 0)
       toast.error('Invalid Amount');
     else {
-      console.log('wallet balance: ', walletBalance)
       if (walletBalance !== null && amount > walletBalance) {
         toast.error(`Exceed the wallet balance. You maximum availability is ${walletBalance} matic`);
       }
-      else (
-        toast(amount.toString())
-      )
+      else {
+        
+        // toast(amount.toString());
+      }
     }
   }
+
   return (
     <>
       {

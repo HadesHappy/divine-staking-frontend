@@ -12,7 +12,6 @@ const useBalance = () => {
     if (account) {
       provider.getBalance(account)
         .then((balance: any) => {
-          console.log(balance)
           const balanceInEth = ethers.utils.formatEther(balance);
           setWalletBalance(Number(balanceInEth));
         })
