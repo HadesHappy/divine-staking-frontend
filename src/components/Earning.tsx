@@ -1,9 +1,11 @@
+import { contractAddress } from "../utils/constants"
+
 const Earning = () => {
   return (
     <div>
       <div className="flex flex-row gap-20 items-center justify-center text-center mt-7">
         <div className="text-purple-500 text-4xl">Address:</div>
-        <div className="text-white text-3xl pt-3">0x02AAC4407e220Ef6B9289521BC85676aC61Dbc77</div>
+        <div className="text-white text-3xl pt-3">{contractAddress}</div>
       </div>
       <div className="mx-10 my-5 py-10 bg-[#2d2159] rounded-xl">
         <div className="flex flex-row px-10 justify-between">

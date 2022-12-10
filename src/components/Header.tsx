@@ -1,12 +1,11 @@
 import toast from 'react-hot-toast';
+import { useMetamaskStatus } from '../hooks/useMetamaskStatus';
+import { useAccountContext } from '../contexts/accountContext';
 
-interface Props {
-  isMetamaskInstalled : boolean,
-  setIsMetamaskInstalled: (value: boolean) => void,
-  setAccount: (value: string) => void
-};
+const Header = () => {
+  const { isMetamaskInstalled } = useMetamaskStatus();
+  const { setAddress } = useAccountContext();
 
-const Header = ({ isMetamaskInstalled, setIsMetamaskInstalled, setAccount }: Props) => {
   const connectWallet = async (): Promise<void> => {
     // to get around type checking
     if (isMetamaskInstalled)
@@ -15,8 +14,8 @@ const Header = ({ isMetamaskInstalled, setIsMetamaskInstalled, setAccount }: Pro
           method: 'eth_requestAccounts',
         })
         .then((accounts: string[]) => {
-          setAccount(accounts[0])
-          toast.success(`Connected wallet address: ${accounts[0].substring(0, 5)}...${accounts[0].substring(accounts[0].length-3)}`)
+          setAddress(accounts[0])
+          toast.success(`Connected wallet address: ${accounts[0].substring(0, 5)}...${accounts[0].substring(accounts[0].length - 3)}`)
         })
         .catch((error: any) => {
           toast.error(`Something went wrong: ${error}`);

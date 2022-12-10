@@ -1,19 +1,15 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
+import { useAccountContext } from '../contexts/accountContext';
 
-interface Props {
-  account: string | null,
-  walletBalance: number | null,
-  setWalletBalance: (value: number | null) => void,
-};
-
-const Balance = ({ account, walletBalance, setWalletBalance }: Props) => {
-
+const Balance = () => {
+  const [walletBalance, setWalletBalance] = useState<number | null>(null);
+  const { account } = useAccountContext();
   const getBalance = async (): Promise<void> => {
-    const network = 'https://polygon-rpc.com/';
+    // const network = 'https://polygon-rpc.com/';
     // const provider = ethers.getDefaultProvider(network);
-    const provider = new ethers.providers.JsonRpcProvider(network);
+    const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com");
     let address: string;
     if (account)
       address = account;
@@ -30,6 +26,7 @@ const Balance = ({ account, walletBalance, setWalletBalance }: Props) => {
         toast.error(`Something went wrong: ${error}`);
       })
   }
+
   useEffect(() => {
     if (account)
       getBalance()
