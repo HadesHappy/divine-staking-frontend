@@ -2,20 +2,20 @@ import { useState } from 'react';
 import { FaRegWindowClose, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
 import toast from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners';
-import useBalance from '../../hooks/useBalance';
 import useMaticPrice from '../../hooks/useMaticPrice';
 import { deposit } from '../../contract/roi.contract';
 import { MINIMUM_DEPOSIT } from '../../utils/constants';
 
 interface Props {
-  showModal: boolean,
-  setShowModal: (value: boolean) => void
+  showModal: boolean;
+  setShowModal: (value: boolean) => void;
+  walletBalance: number | null;
+  getBalance: Function;
 }
 
-const DepositModal = ({ showModal, setShowModal }: Props) => {
+const DepositModal = ({ showModal, setShowModal, walletBalance, getBalance }: Props) => {
   const [amount, setAmount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const { walletBalance, getBalance } = useBalance();
   const { price } = useMaticPrice();
 
   const onCloseClick = (e: any) => {
@@ -32,7 +32,7 @@ const DepositModal = ({ showModal, setShowModal }: Props) => {
   }
 
   const depositClick = async () => {
-    if (price && amount < Math.floor(MINIMUM_DEPOSIT / price))
+    if (price && amount <= Math.floor(MINIMUM_DEPOSIT / price))
       toast.error(`Invalid Amount. Minimum deposit amount is: ${Math.floor(MINIMUM_DEPOSIT / price)}`);
     else {
       if (walletBalance !== null && amount > walletBalance) {

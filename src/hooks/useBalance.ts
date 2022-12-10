@@ -13,7 +13,8 @@ const useBalance = () => {
       provider.getBalance(account)
         .then((balance: any) => {
           const balanceInEth = ethers.utils.formatEther(balance);
-          setWalletBalance(Math.floor(Number(balanceInEth)*100000)/100000);
+          console.log(balanceInEth)
+          setWalletBalance(Math.floor(Number(balanceInEth) * 100000) / 100000);
         })
         .catch((error) => {
           console.log(error);

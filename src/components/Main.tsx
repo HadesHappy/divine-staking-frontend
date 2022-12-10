@@ -4,13 +4,16 @@ import Balance from './Balance'
 import Withdraw from './Withdraw'
 import Header from './Header'
 
+import useBalance from '../hooks/useBalance'
+
 const Main = () => {
+  const { walletBalance, getBalance } = useBalance();
   return (
     <>
       <Header/>
-      <Deposit/>
+      <Deposit walletBalance = {walletBalance} getBalance={getBalance} />
       <Description />
-      <Balance /> 
+      <Balance walletBalance = {walletBalance} /> 
       <Withdraw />
     </>
   )

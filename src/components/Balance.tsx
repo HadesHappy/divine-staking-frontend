@@ -1,8 +1,10 @@
-import useBalance from '../hooks/useBalance';
 import useContractInfo from '../hooks/useContractInfo';
 
-const Balance = () => {
-  const { walletBalance } = useBalance();
+interface Props {
+  walletBalance: number | null;
+}
+
+const Balance = ({walletBalance}: Props) => {
   const { totalDeposit } = useContractInfo();
 
   return (
