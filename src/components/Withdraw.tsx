@@ -10,10 +10,10 @@ const Withdraw = () => {
             <div className="uppercase text-3xl text-purple-600 cursor-pointer">max</div>
           </div>
         </div>
-        <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-5 w-60 rounded-xl mt-10 mb-5 cursor-pointer text-3xl text-gray-800 hover:text-white font-bold text-center'>
+        <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-5 w-60 rounded-xl my-5 cursor-pointer text-3xl text-gray-800 hover:text-white font-bold text-center'>
           Withdraw
         </div>
-        <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-5 w-80 rounded-xl mt-10 mb-5 cursor-pointer text-3xl text-gray-800 hover:text-white font-bold text-center'>
+        <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-5 w-80 rounded-xl cursor-pointer text-3xl text-gray-800 hover:text-white font-bold text-center'>
           Withdraw Record
         </div>
       </div>
