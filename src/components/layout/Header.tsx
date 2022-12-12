@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
-import { useMetamaskStatus } from '../hooks/useMetamaskStatus';
-import { useAccountContext } from '../contexts/accountContext';
+import { useMetamaskStatus } from '../../hooks/useMetamaskStatus';
+import { useAccountContext } from '../../contexts/accountContext';
 
 const Header = () => {
   const { isMetamaskInstalled } = useMetamaskStatus();
@@ -25,14 +25,11 @@ const Header = () => {
   }
 
   return (
-    <div className='flex flex-row justify-between h-40 px-20'>
-      <img src='/assets/images/1.png' alt='logo' />
-      <div className='flex justify-center items-center'>
-        <div className='flex flex-row gap-3 items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-5 px-7 rounded-lg cursor-pointer' onClick={connectWallet}>
-          <img className='w-7 h-7' src='/assets/images/matic.svg' alt='matic' />
-          <div className='text-gray-800 hover:text-white font-bold text-2xl'>Connect Wallet</div>
-        </div>
+    <div className='flex flex-row items-center justify-between py-5 px-7 bg-[#212244]'>
+      <div className='text-center bg-indigo-500 text-white font-normal text-sm cursor-pointer py-2 px-2 rounded-md'>
+        Connect Wallet
       </div>
+      <div className='text-teal-500 text-xl font-normal' >Divine</div>
     </div>
   )
 }

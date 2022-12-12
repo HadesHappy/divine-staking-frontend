@@ -16,7 +16,9 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "react-spinners": "^0.13.7",
+    "slick-carousel": "^1.8.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
