@@ -1,27 +1,22 @@
-import { BsFillExclamationCircleFill } from 'react-icons/bs'
-
-interface Props {
-  text: string;
-  balance: number;
-}
-
-const BalanceItem = ({text, balance}: Props) => (
-  <div className='space-y-2 py-3'>
-    <div className="text-white font-normal text-sm">
-      {text}
-    </div>
-    <div className="flex flex-row gap-2 items-center">
-      <div className="bg-[#2c2c53] py-1 px-5 text-indigo-100 rounded-xl text-sm">{balance} MATIC</div>
-      <BsFillExclamationCircleFill className='text-indigo-300'/>
-    </div>
-  </div>
-);
-
 const Balance = () => {
   return(
-    <div className="flex flex-row justify-between">
-      <BalanceItem text='Wallet balance:' balance={0.14} />
-      <BalanceItem text='Deposited balance:' balance={0.00} />
+    <div className="flex flex-row gap-3 justify-between items-center">
+      <div className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500">
+        <div className="rounded-full bg-[#2d2159] m-3">
+          <div className="flex items-center justify-center text-base text-white h-20 w-20">2.55%</div>
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center w-4/5">
+        <div className="flex flex-row items-center w-full">
+          <div className="uppercase text-white text-base w-3/5">total deposit:</div>
+          <div className="text-base text-center bg-[#3d3d69] py-1 text-white rounded-xl w-2/5">1</div>
+        </div>
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 w-full h-2 my-1 rounded-full" />
+        <div className="flex flex-row items-center w-full">
+          <div className="uppercase text-white text-base w-3/5">total earned:</div>
+          <div className="text-base text-center bg-[#3d3d69] py-1 text-white rounded-xl w-2/5">0</div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 const Repayment = () => {
   return (
-    <div className="px-7 mt-5">
+    <div className="px-7">
+      <div className="text-purple-400 py-2 text-base text-center">Loan Repayment</div>
       <div className="px-5 py-3 bg-[#2d2159] rounded-xl">
-        <div className="text-white py-2 text-base">Loan Repayment</div>
         <div className="flex flex-col gap-2">
           <div className="flex flex-row justify-between items-center">
             <div className="text-white uppercase w-3/5">loan balance</div>

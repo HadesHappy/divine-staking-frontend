@@ -1,6 +1,7 @@
 import Invite from './Invite';
 import TeamInfo from './TeamInfo';
 import Share from './Share';
+import Referel from './Referel';
 
 const Team = () => {
   return(
@@ -8,6 +9,7 @@ const Team = () => {
       <Invite />
       <TeamInfo />
       <Share />
+      <Referel />
     </div>
   )
 }

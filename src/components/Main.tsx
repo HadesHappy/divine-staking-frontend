@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
+
 import Home from './sections/home'
-import Deposit from './sections/deposit'
-import Nft from './sections/nft'
-import Mine from './sections/mine'
+import Loan from './sections/Loan'
 import Team from './sections/team'
+import Nft from './sections/nft'
+import Contact from './sections/contact'
 
 const Main = () => {
   const [index, setIndex] = useState<number>(0)
@@ -17,16 +18,16 @@ const Main = () => {
     string = (<Home />)
   }
   else if (index === 1) {
-    string = (<Deposit />)
+    string = (<Loan />)
   }
   else if (index === 2) {
-    string = (<Nft />)
+    string = (<Team />)
   }
   else if (index === 3) {
-    string = (<Mine />)
+    string = (<Nft />)
   }
   else {
-    string = (<Team />)
+    string = (<Contact />)
   }
 
   return (
