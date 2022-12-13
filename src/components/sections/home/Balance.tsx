@@ -11,7 +11,7 @@ const BalanceItem = ({text, balance}: Props) => (
       {text}
     </div>
     <div className="flex flex-row gap-2 items-center">
-      <div className="bg-indigo-500 py-1 px-5 text-indigo-100 rounded-xl text-sm">{balance} USDT</div>
+      <div className="bg-[#2c2c53] py-1 px-5 text-indigo-100 rounded-xl text-sm">{balance} MATIC</div>
       <BsFillExclamationCircleFill className='text-indigo-300'/>
     </div>
   </div>

@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <div className='flex flex-row items-center justify-between py-5 px-7 bg-[#212244]'>
-      <div className='text-center bg-indigo-500 text-white font-normal text-sm cursor-pointer py-2 px-2 rounded-md'>
+      <div className='text-center bg-indigo-600 text-white font-normal text-sm cursor-pointer py-2 px-2 rounded-md'>
         Connect Wallet
       </div>
       <div className='text-teal-500 text-xl font-normal' >Divine</div>
