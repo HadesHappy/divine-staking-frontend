@@ -8,27 +8,27 @@ const TeamItem = ({ text, description }: Props) => (
     <div className="text-white font-normal">
       {text}
     </div>
-    <div className="text-indigo-300">
+    <div className="text-purple-400">
       {description}
     </div>
   </div>
 )
 
-const Team = () => {
+const TeamInfo = () => {
   return (
-    <div className="p-7 my-5 rounded-xl bg-[#212244]">
-      <div className="text-white text-lg">
+    <div className="p-7 my-5 rounded-3xl bg-[#2d2159]">
+      <div className="text-white text-base">
         My team
       </div>
-      <div className="bg-[#2c2c53] p-3 flex flex-row justify-between rounded-xl mt-5">
+      <div className="bg-[#3d3d69] p-3 flex flex-row justify-between rounded-xl mt-5">
         <TeamItem text='0' description="People" />
         <TeamItem text='0.00' description='Team Earning' />
       </div>
-      <div className="bg-indigo-600 text-white text-center rounded-xl w-full py-2 mt-5 cursor-pointer">
+      <div className="bg-purple-500 text-white text-center rounded-xl w-full py-2 mt-5 cursor-pointer">
         Withdraw
       </div>
     </div>
   )
 }
 
-export default Team;
+export default TeamInfo;

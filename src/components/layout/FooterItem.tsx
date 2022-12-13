@@ -15,7 +15,7 @@ const FooterItem = ({ id, icon1, icon2, text, index, setIndex }: Props) => {
   }
   return (
     <div className="flex flex-col gap-2 items-center justify-center cursor-pointer" onClick={onClick}>
-      <div className="flex flex-row items-center justify-center w-9 h-9 rounded-xl bg-indigo-500">
+      <div className="flex flex-row items-center justify-center w-9 h-9 rounded-xl bg-purple-500">
         {
           id === index ?
             icon2
@@ -23,7 +23,7 @@ const FooterItem = ({ id, icon1, icon2, text, index, setIndex }: Props) => {
             icon1
         }
       </div>
-      <div className="text-center font-normal text-sm text-white">
+      <div className="text-center font-normal text-white">
         {text}
       </div>
     </div>

@@ -25,11 +25,11 @@ const Header = () => {
   }
 
   return (
-    <div className='flex flex-row items-center justify-between py-5 px-7 bg-[#212244]'>
-      <div className='text-center bg-indigo-600 text-white font-normal text-sm cursor-pointer py-2 px-2 rounded-md'>
+    <div className='flex flex-row items-center justify-between py-5 px-7 bg-[#2d2159]'>
+      <div className='text-center bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-normal text-sm cursor-pointer py-2 px-5 rounded-full'>
         Connect Wallet
       </div>
-      <div className='text-teal-500 text-xl font-normal' >Divine</div>
+      <img className='w-12 h-12' src='/assets/images/1.png' alt='logo' />
     </div>
   )
 }

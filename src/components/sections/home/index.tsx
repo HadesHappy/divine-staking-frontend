@@ -7,7 +7,7 @@ import PoolInfo from './PoolInfo';
 
 const Home = () => {
   return (
-    <div className='bg-[#161730] min-h-screen mb-14'>
+    <div className='bg-[#101728] min-h-screen mb-14'>
       <div className='px-7 rounded-b-3xl bg-[#212244]'>
         <Images />
         <Participate />

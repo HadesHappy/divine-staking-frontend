@@ -30,11 +30,11 @@ const Main = () => {
   }
 
   return (
-    <>
+    <div className='text-sm'>
       <Header />
       {string}
       <Footer index={index} setIndex={setIndex} />
-    </>
+    </div>
   )
 }
 

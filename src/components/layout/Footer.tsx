@@ -19,7 +19,7 @@ interface Props {
 
 const Footer = ({ index, setIndex }: Props) => {
   return (
-    <div className="fixed bottom-0 left-0 w-screen bg-[#212244] rounded-t-3xl">
+    <div className="fixed bottom-0 left-0 w-screen bg-[#2d2159] rounded-t-3xl">
       <div className="flex flex-row px-7 py-3 justify-between items-center">
         <FooterItem text='Home' id={0} icon1={<BsHouseDoor className="text-white h-5 w-5" />} icon2={<BsFillHouseDoorFill className="text-white h-5 w-5" />} index={index} setIndex={setIndex} />
         <FooterItem text='Deposit' id={1} icon1={<BsSave2 className="text-white h-5 w-5" />} icon2={<BsSave2Fill className="text-white h-5 w-5" />} index={index} setIndex={setIndex} />

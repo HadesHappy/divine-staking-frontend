@@ -8,7 +8,7 @@ const EarningItem = ({ text, description }: Props) => (
     <div className="text-white font-normal">
       {text}
     </div>
-    <div className="text-indigo-300">
+    <div className="text-purple-400">
       {description}
     </div>
   </div>
@@ -16,14 +16,13 @@ const EarningItem = ({ text, description }: Props) => (
 
 const MyEarning = () => {
   return (
-    <div className="p-7 my-5 rounded-xl bg-[#212244]">
+    <div className="p-7 my-5 rounded-3xl bg-[#2d2159]">
       <div className="text-white text-lg">
         My earnings
       </div>
-      <div className="bg-[#2c2c53] p-3 flex flex-row justify-between rounded-xl mt-5">
+      <div className="bg-[#3d3d69] p-3 flex flex-row justify-between rounded-xl mt-5">
         <EarningItem text='0.00' description="Total Deposit" />
-        <EarningItem text='0.00' description='Total Earned'/>
-        <EarningItem text='0.00%' description="Percentage" />
+        <EarningItem text='0.00' description='Total Earned' />
       </div>
     </div>
   )

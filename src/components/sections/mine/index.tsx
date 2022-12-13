@@ -1,18 +1,14 @@
 
-import Address from "./Address";
-import Invite from "./Invite";
+import Wallet from "../common/Wallet";
 import Withdraw from './Withdraw';
 import MyEarning from "./MyEarning";
-import Team from './Team';
 
 const Mine = () => {
   return (
-    <div className="bg-[#161730] pb-20">
-      {/* <Address /> */}
+    <div className="bg-[#161730] min-h-screen pb-20">
+      <Wallet />
       <Withdraw />
       <MyEarning />
-      <Invite />
-      <Team />
     </div>
 
   )
